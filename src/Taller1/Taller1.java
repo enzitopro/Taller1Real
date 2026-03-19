@@ -73,4 +73,25 @@ public class Taller1 {
 			System.out.println("Archivo de usuarios no encontrado.");
 		}
 	}
+    public static void cargarRegistros() {
+		try {
+			File archivoReg = new File("Registros.txt");
+			Scanner lectorArchivoReg = new Scanner(archivoReg);
+			
+			while (lectorArchivoReg.hasNextLine()) {
+				String linea = lectorArchivoReg.nextLine();
+				String[] partes = linea.split(";");
+				
+				regUsuarios[totalRegistros] = partes[0];
+				regFechas[totalRegistros] = partes[1];
+				regHoras[totalRegistros] = Integer.valueOf(partes[2]);
+				regActividades[totalRegistros] = partes[3];
+				
+				totalRegistros++;
+			}
+			lectorArchivoReg.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Archivo de registros no encontrado.");
+		}
+	}
 }
