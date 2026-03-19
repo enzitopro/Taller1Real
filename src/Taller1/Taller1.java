@@ -1,5 +1,9 @@
 package Taller1;
 
+// Integrante 1: Elliot Bravo de Rodt - enzitopro
+//Integrante 2: Enzo Salvatore Cornieles Medina -
+// Link repositorio: https://github.com/enzitopro/Taller1Real
+
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
