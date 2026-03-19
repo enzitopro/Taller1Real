@@ -53,4 +53,24 @@ public class Taller1 {
 		}
 		lector.close();
 	}
+    public static void cargarUsuarios() {
+		try {
+			File archivo = new File("Usuarios.txt");
+			Scanner lectorArchivo = new Scanner(archivo);
+			
+			while (lectorArchivo.hasNextLine()) {
+				String linea = lectorArchivo.nextLine();
+				String[] partes = linea.split(";");
+				
+				idUsuarios[totalUsuarios] = partes[0];
+				passUsuarios[totalUsuarios] = partes[1];
+				
+				totalUsuarios++;
+			}
+			lectorArchivo.close();
+			// System.out.println(totalUsuarios + " usuarios cargados");
+		} catch (FileNotFoundException e) {
+			System.out.println("Archivo de usuarios no encontrado.");
+		}
+	}
 }
