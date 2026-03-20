@@ -1,7 +1,7 @@
 package Taller1;
 
 // Integrante 1: Elliot Bravo de Rodt - enzitopro
-//Integrante 2: Enzo Salvatore Cornieles Medina -
+// Integrante 2: Enzo Salvatore Cornieles Medina -
 // Link repositorio: https://github.com/enzitopro/Taller1Real
 
 import java.io.File;
@@ -96,6 +96,34 @@ public class Taller1 {
 			lectorArchivoReg.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("Archivo de registros no encontrado.");
+		}
+	}
+    
+    public static void menuUsuarios(Scanner lector) {
+		System.out.print("Usuario: ");
+		String usuarioIngresado = lector.nextLine();
+		
+		System.out.print("Contraseña: ");
+		String passIngresada = lector.nextLine();
+		
+		int indiceUser = -1;
+		
+		for (int i = 0; i < totalUsuarios; i++) {
+			if (idUsuarios[i].equals(usuarioIngresado)) {
+				indiceUser = i;
+				break;
+			}
+		}
+		if (indiceUser == -1) {
+			System.out.println("Usuario no encontrado.");
+		} else {
+			if (passUsuarios[indiceUser].equals(passIngresada)) {
+				System.out.println("Acceso correcto.");
+				
+				subMenuActividades(lector, indiceUser);
+			} else {
+				System.out.println("Contraseña incorrecta.");
+			}
 		}
 	}
 }
