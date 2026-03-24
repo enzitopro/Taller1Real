@@ -229,4 +229,32 @@ public class Taller1 {
             }
         } while (opcion2 != 5);
     }
+    
+    public static void actividadMasRealizada(Scanner lector) {
+        if (totalRegistros == 0) {
+            System.out.println("No se encontraron registros.");
+            return;
+        }
+        String maxUsuario = "";
+        String maxActividad = "";
+        int maxHoras = 0;
+        
+        for (int i = 0; i < totalRegistros; i++) {
+            String usuario = regUsuarios[i];
+            String actividad = regActividades[i];
+            int sumaHoras = 0;
+            
+            for (int j = 0; j < totalRegistros; j++) {
+                if (regActividades[j].equals(actividad)) {
+                    sumaHoras += regHoras[j];
+                }
+            }
+            if (sumaHoras > maxHoras) {
+                maxUsuario = usuario;
+                maxHoras = sumaHoras;
+                maxActividad = actividad;
+            }
+        }
+        System.out.println("La actividad más repetida es de: " + maxUsuario + ", haciendo la actividad de: " +  maxActividad + " en un total de " + maxHoras + " horas.");
+    }
 }
