@@ -1,7 +1,7 @@
 package Taller1;
 
 // Integrante 1: Elliot Bravo de Rodt - enzitopro
-// Integrante 2: Enzo Salvatore Cornieles Medina -
+// Integrante 2: Enzo Salvatore Cornieles Medina - justamago
 // Link repositorio: https://github.com/enzitopro/Taller1Real
 
 import java.io.File;
@@ -102,6 +102,11 @@ public class Taller1 {
 	}
     
     public static void menuUsuarios(Scanner lector) {
+		if (totalUsuarios == 0) {
+			System.out.println("No hay usuarios registrados.");
+			return;
+		}
+
         System.out.print("Usuario: ");
         String usuario = lector.nextLine();
         int validador = -1;
