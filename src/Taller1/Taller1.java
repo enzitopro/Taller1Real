@@ -130,4 +130,42 @@ public class Taller1 {
         
         subMenuActividades(lector, validador);
     }
+
+    public static void subMenuActividades(Scanner lector, int indiceUser) {
+        boolean salir = false;
+        while (!salir) {
+            System.out.println("\n--- Que deseas realizar? ---");
+            System.out.println("1) Registrar actividad");
+            System.out.println("2) Modificar actividad");
+            System.out.println("3) Eliminar actividad");
+            System.out.println("4) Cambiar contraseña");
+            System.out.println("5) Salir.");
+            System.out.print("> ");
+            
+            try {
+                int opcion = Integer.valueOf(lector.nextLine());
+                switch (opcion) {
+                    case 1:
+                        registrarActividad(lector, indiceUser);
+                        break;
+                    case 2:
+                        modificarActividad(lector, indiceUser);
+                        break;
+                    case 3:
+                        eliminarActividad(lector, indiceUser);
+                        break;
+                    case 4:
+                        cambiarPassword(lector, indiceUser);
+                        break;
+                    case 5:
+                        salir = true;
+                        break;
+                    default:
+                        System.out.println("Opcion inválida");
+                }
+            } catch (Exception e) {
+                System.out.println("Ingrese un número válido.");
+            }
+        }
+    }
 }
