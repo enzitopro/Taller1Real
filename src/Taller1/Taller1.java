@@ -22,41 +22,43 @@ public class Taller1 {
 	static int totalRegistros = 0;
 
     public static void main(String[] args) {
-		cargarUsuarios();
-		cargarRegistros();
-		
-		Scanner lector = new Scanner(System.in);
-		boolean salir = false;
-		
-		while (!salir) {
-			System.out.println("1) Menu de Usuarios");
-			System.out.println("2) Menu de Analisis");
-			System.out.println("3) Menu de Salir");
-			System.out.println("> ");
-			
-			try {
-				int opcion = Integer.valueOf(lector.nextLine());
-				
-				switch (opcion) {
-				case 1:
-					menuUsuarios(lector);
-					break;
-				case 2:
-					menuAnalisis(lector);
-					break;
-				case 3:
-					salir = true;
-					System.out.println("Fin del programa");
-					break;
-				default:
-					System.out.println("Opcion inválida");
-				}
-			} catch (NumberFormatException e) {
-				System.out.println("Ingrese un número válido");
-			}
-		}
-		lector.close();
-	}
+        cargarUsuarios();
+        cargarRegistros();
+        
+        Scanner lector = new Scanner(System.in);
+        int opcion1 = 0;
+        
+        do {
+            try {
+                System.out.println("\n=== Menú Principal ===");
+                System.out.println("1) Menú de Usuarios");
+                System.out.println("2) Menú de Análisis");
+                System.out.println("3) Salir");
+                System.out.print("Seleccione una opción: ");
+                
+                opcion1 = Integer.valueOf(lector.nextLine());
+                
+                switch(opcion1) {
+                    case 1:
+                        menuUsuarios(lector);
+                        break;
+                    case 2:
+                        menuAnalisis(lector);
+                        break;
+                    case 3:
+                        System.out.println("Saliendo del programa...");
+                        break;
+                    default:
+                        System.out.println("Número invalido, intentelo nuevamente.");
+                }
+            } catch (Exception e) {
+                System.out.println("Lo que se ingreso no fue un número, intentelo nuevamente");
+                opcion1 = 0;
+            }
+        } while (opcion1 != 3);
+        
+        lector.close();
+    }
     public static void cargarUsuarios() {
 		try {
 			File archivo = new File("Usuarios.txt");
