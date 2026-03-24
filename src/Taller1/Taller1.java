@@ -102,30 +102,32 @@ public class Taller1 {
 	}
     
     public static void menuUsuarios(Scanner lector) {
-		System.out.print("Usuario: ");
-		String usuarioIngresado = lector.nextLine();
-		
-		System.out.print("Contraseña: ");
-		String passIngresada = lector.nextLine();
-		
-		int indiceUser = -1;
-		
-		for (int i = 0; i < totalUsuarios; i++) {
-			if (idUsuarios[i].equals(usuarioIngresado)) {
-				indiceUser = i;
-				break;
-			}
-		}
-		if (indiceUser == -1) {
-			System.out.println("Usuario no encontrado.");
-		} else {
-			if (passUsuarios[indiceUser].equals(passIngresada)) {
-				System.out.println("Acceso correcto.");
-				
-				subMenuActividades(lector, indiceUser);
-			} else {
-				System.out.println("Contraseña incorrecta.");
-			}
-		}
-	}
+        System.out.print("Usuario: ");
+        String usuario = lector.nextLine();
+        int validador = -1;
+        
+        for (int i = 0; i < totalUsuarios; i++) {
+            if (idUsuarios[i].equals(usuario)) {
+                validador = i;
+                break;
+            }
+        }
+        if (validador == -1) {
+            System.out.println("Usuario no encontrado");
+            return;
+        }
+        
+        System.out.print("Contraseña: ");
+        String contrasena = lector.nextLine();
+        
+        if (!passUsuarios[validador].equals(contrasena)) {
+            System.out.println("Contraseña incorrecta");
+            return;
+        }
+        
+        System.out.println("Acceso correcto!");
+        System.out.println("Bienvenido " + usuario + "!");
+        
+        subMenuActividades(lector, validador);
+    }
 }
