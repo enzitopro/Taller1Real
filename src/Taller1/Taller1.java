@@ -173,4 +173,60 @@ public class Taller1 {
             }
         }
     }
+    
+    public static void registrarActividad(Scanner lector, int indiceUser) {
+        System.out.println("Función en construcción...");
+    }
+    
+    public static void modificarActividad(Scanner lector, int indiceUser) {
+        System.out.println("Función en construcción...");
+    }
+    
+    public static void eliminarActividad(Scanner lector, int indiceUser) {
+        System.out.println("Función en construcción...");
+    }
+    
+    public static void cambiarPassword(Scanner lector, int indiceUser) {
+        System.out.println("Función en construcción...");
+    }
+    
+    public static void menuAnalisis(Scanner lector) {
+        int opcion2 = 0;
+        do {
+            try {
+                System.out.println("\n--- Bienvenido al Menú de Análisis! ---");
+                System.out.println("Que deseas realizar?");
+                System.out.println("1) Actividad más realizada");
+                System.out.println("2) Actividad más realizada por cada usuario");
+                System.out.println("3) Usuario con mayor procastinacion");
+                System.out.println("4) Ver todas las actividades");
+                System.out.println("5) Salir");
+                System.out.print("Seleccione una opción: ");
+                opcion2 = Integer.valueOf(lector.nextLine());
+                
+                switch(opcion2) {
+                    case 1:
+                        actividadMasRealizada(lector);
+                        break;
+                    case 2:
+                        actividadMasRealizadaPorUsuario(lector);
+                        break;
+                    case 3:
+                        mayorProcrastinacion(lector);
+                        break;
+                    case 4:
+                        todasLasActividades(lector);
+                        break;
+                    case 5:
+                        System.out.println("Saliendo del sistema de Analisis...");
+                        break;
+                    default:
+                        System.out.println("Número invalido, intentelo nuevamente.");
+                }
+            } catch(Exception e) {
+                System.out.println("Lo que se ingreso no fue un número, intentelo nuevamente");
+                opcion2 = 0;
+            }
+        } while (opcion2 != 5);
+    }
 }
