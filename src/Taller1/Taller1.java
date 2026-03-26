@@ -318,4 +318,31 @@ public class Taller1 {
         System.out.println("* " + usuario2 + " -> " + maxActividad2 + " -> con " + maxHoras2 + " horas registradas.");
         System.out.println("* " + usuario3 + " -> " + maxActividad3 + " -> con " + maxHoras3 + " horas registradas.");
     }
+    public static void mayorProcrastinacion(Scanner lector) {
+        if (totalRegistros == 0) {
+            System.out.println("No se encontraron registros.");
+            return;
+        }
+        
+        String maxUsuario = "";
+        int maxHorasGlobal = 0;
+        
+        for (int u = 0; u < totalUsuarios; u++) {
+            String usuarioActual = idUsuarios[u];
+            int horasDelUsuario = 0;
+            
+            for (int i = 0; i < totalRegistros; i++) {
+                if (regUsuarios[i].equals(usuarioActual)) {
+                    horasDelUsuario += regHoras[i];
+                }
+            }
+            
+            if (horasDelUsuario > maxHorasGlobal) {
+                maxHorasGlobal = horasDelUsuario;
+                maxUsuario = usuarioActual;
+            }
+        }
+        
+        System.out.println("\nEl usuario con mayor procrastinación fue " + maxUsuario + " con " + maxHorasGlobal + " horas.");
+    }
 }
