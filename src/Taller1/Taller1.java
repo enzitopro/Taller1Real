@@ -230,11 +230,32 @@ public class Taller1 {
         }
         if (!tieneActividades) {
         	System.out.println("No tienes actividades registradas");
+        	return;
+        }
+        System.out.println("\nIngrese el ID de la actividad a modificar: ");
+        try {
+        	int id = Integer.valueOf(lector.nextLine());
+        	if (id >= 0 && id < totalRegistros && regUsuarios[id].equals(nombreUsuario)) {
+        		System.out.println("Nueva fecha (actual: " + regFechas[id] + "): ");
+        		regFechas[id] =  lector.nextLine();
+        		
+        		System.out.println("Nuevas horas (actual: " + regHoras[id] + "):");
+        		regHoras[id] = Integer.valueOf(lector.nextLine());
+        		
+        		System.out.println("Nueva actividad (actual: " + regActividades[id] + "): ");
+        		regActividades[id] = lector.nextLine();
+        		
+        		System.out.println("Actividad modificada con exito!");
+        	} else {
+        		System.out.println("ID invalido o la actividad no te pertenece.");
+        	}
+        } catch (NumberFormatException e) {
+        	System.out.println("Entrada invalida. Debe ser un numero.");
         }
     }
     
     public static void eliminarActividad(Scanner lector, int indiceUser) {
-        System.out.println("Función en construcción...");
+        System.out.println("\n--- Eliminar actividad ---");
     }
     
     public static void cambiarPassword(Scanner lector, int indiceUser) {
