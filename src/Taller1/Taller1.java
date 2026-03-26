@@ -209,7 +209,7 @@ public class Taller1 {
         
         String nombreUsuario = idUsuarios[indiceUser];
         regUsuarios[totalRegistros] = nombreUsuario;
-        regFechas[totalRegistro] = fecha;
+        regFechas[totalRegistros] = fecha;
         regHoras[totalRegistros] = horas;
         regActividades[totalRegistros] = actividad;
         
@@ -219,7 +219,7 @@ public class Taller1 {
     
     public static void modificarActividad(Scanner lector, int indiceUser) {
         System.out.println("\n--- Modificar actividad ---");
-        String nombreUsuario = idusuarios[indiceUser];
+        String nombreUsuario = idUsuarios[indiceUser];
         boolean tieneActividades = false;
         
         for (int i=0; i<totalRegistros; i++) {
