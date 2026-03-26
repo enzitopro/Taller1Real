@@ -236,16 +236,33 @@ public class Taller1 {
         try {
         	int id = Integer.valueOf(lector.nextLine());
         	if (id >= 0 && id < totalRegistros && regUsuarios[id].equals(nombreUsuario)) {
-        		System.out.println("Nueva fecha (actual: " + regFechas[id] + "): ");
-        		regFechas[id] =  lector.nextLine();
+        		System.out.println("Que deseas modificar?");
+        		System.out.println("1) Fecha");
+        		System.out.println("2) Horas");
+        		System.out.println("3) Nombre de la actividad");
+        		System.out.println("> ");
+        		int opcionModificar = Integer.valueOf(lector.nextLine());
         		
-        		System.out.println("Nuevas horas (actual: " + regHoras[id] + "):");
-        		regHoras[id] = Integer.valueOf(lector.nextLine());
-        		
-        		System.out.println("Nueva actividad (actual: " + regActividades[id] + "): ");
-        		regActividades[id] = lector.nextLine();
-        		
-        		System.out.println("Actividad modificada con exito!");
+        		switch (opcionModificar) {
+        		case 1:
+        			System.out.println("Nueva fecha (actual: " +regFechas[id]+"): ");
+        			regFechas[id] = lector.nextLine();
+        			System.out.println("Fecha modificada con exito");
+        			break;
+        		case 2:
+        			System.out.println("Nuevas horas (actual: "+regHoras[id]+"): ");
+        			regHoras[id] = Integer.valueOf(lector.nextLine());
+        			System.out.println("Horas modificadas con exito.");
+        			break;
+        		case 3:
+        			System.out.println("Nueva actividad (actual: "+regActividades[id]+"): ");
+        			regActividades[id] = lector.nextLine();
+        			System.out.println("Actividad modificada con exito!");
+        			break;
+        		default:
+        			System.out.println("Opcion invalida. No se realizaron cambios");
+        			
+        	}
         	} else {
         		System.out.println("ID invalido o la actividad no te pertenece.");
         	}
@@ -260,7 +277,7 @@ public class Taller1 {
         boolean tieneActividades = false;
         
         for (int i = 0; i<totalRegistros; i++) {
-        	if (regUsuarios[i].equales(nombreUsuario)) {
+        	if (regUsuarios[i].equals(nombreUsuario)) {
         		System.out.println("ID: "+i+" | "+regFechas[i]+" | "+regHoras[i]+"h | "+regActividades[i]);
         		tieneActividades = true;
         	}
