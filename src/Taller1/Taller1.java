@@ -293,7 +293,12 @@ public class Taller1 {
     }
     
     public static void cambiarPassword(Scanner lector, int indiceUser) {
-        System.out.println("Función en construcción...");
+        System.out.println("\n--- Cambiar contraseña ---");
+        System.out.println("Ingrese su nueva contraseña: ");
+        String nuevaPass = lector.nextLine();
+        
+        passUsuarios[indiceUser] = nuevaPass;
+        System.out.println("Contraseña actualizada con exito!.");
     }
     
     public static void menuAnalisis(Scanner lector) {
