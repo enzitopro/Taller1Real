@@ -256,6 +256,14 @@ public class Taller1 {
     
     public static void eliminarActividad(Scanner lector, int indiceUser) {
         System.out.println("\n--- Eliminar actividad ---");
+        String nombreUsuario = idUsuarios[indiceUser];
+        boolean tieneActividades = false;
+        
+        for (int i = 0; i<totalRegistros; i++) {
+        	if (regUsuarios[i].equales(nombreUsuario)) {
+        		System.out.println("");
+        	}
+        }
     }
     
     public static void cambiarPassword(Scanner lector, int indiceUser) {
