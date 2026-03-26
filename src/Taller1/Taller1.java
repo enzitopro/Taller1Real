@@ -261,8 +261,34 @@ public class Taller1 {
         
         for (int i = 0; i<totalRegistros; i++) {
         	if (regUsuarios[i].equales(nombreUsuario)) {
-        		System.out.println("");
+        		System.out.println("ID: "+i+" | "+regFechas[i]+" | "+regHoras[i]+"h | "+regActividades[i]);
+        		tieneActividades = true;
         	}
+        }
+        if (!tieneActividades) { 
+        	System.out.println("No tienes actividades registradas para eliminar.");
+        	return;
+        }
+        System.out.println("\nIngrese el ID de la actividad: ");
+        try {
+        	int id = Integer.valueOf(lector.nextLine());
+        	
+        	if (id >= 0 && id < totalRegistros && regUsuarios[id].equals(nombreUsuario)) {
+        		
+        		for (int j = id; j<totalRegistros -1; j++) {
+        			regUsuarios[j] = regUsuarios[j+1];
+        			regFechas[j] = regFechas[j+1];
+        			regHoras[j] = regHoras[j+1];
+        			regActividades[j] = regActividades[j+1];
+        		}
+        		
+        		totalRegistros--;
+        		System.out.println("Actividad eliminada con exito!");
+        	} else {
+        		System.out.println("ID invalido o la actividad no te pertenece.");
+        	}
+        } catch (NumberFormatException e) {
+        	System.out.println("Entrada invalida. Debe ser un numero.");
         }
     }
     
