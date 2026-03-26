@@ -7,6 +7,7 @@ package Taller1;
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 
 public class Taller1 {
         // para cargar usuarios
@@ -46,6 +47,8 @@ public class Taller1 {
                         menuAnalisis(lector);
                         break;
                     case 3:
+                    	guardarUsuarios();
+                    	guardarRegistros();
                         System.out.println("Saliendo del programa...");
                         break;
                     default:
@@ -175,11 +178,59 @@ public class Taller1 {
     }
     
     public static void registrarActividad(Scanner lector, int indiceUser) {
-        System.out.println("Función en construcción...");
+        System.out.println("\n--- Registrar nueva actividad ---");
+        if (totalRegistros >= 300) {
+        	System.out.println("Se ha alcanzado el límite de actividades a registrar.");
+        	System.out.println("No se pueden agregar más actividades");
+        	return;
+        }
+        
+        System.out.println("Ingrese la fecha de la actividad (ej. 04/04/2026): ");
+        String fecha = lector.nextLine();
+        
+        int horas = 0;
+        boolean horaValida = false;
+        while (!horaValida) {
+        	System.out.println("Ingrese por cuanto tiempo se realizó la actividad: ");
+        	try {
+        		horas = Integer.valueOf(lector.nextLine());
+        		if (horas > 0) {
+        			horaValida = true;
+        		} else {
+        			System.out.println("Las horas deben ser mayores a 0.");
+        		}
+        	} catch (NumberFormatException e) {
+        		System.out.println("Por favor, ingrese un número entero.");
+        	}
+        }
+        
+        System.out.println("Ingrese el nombre de la actividad (ej. ver steel ball run): ");
+        String actividad = lector.nextLine();
+        
+        String nombreUsuario = idUsuarios[indiceUser];
+        regUsuarios[totalRegistros] = nombreUsuario;
+        regFechas[totalRegistro] = fecha;
+        regHoras[totalRegistros] = horas;
+        regActividades[totalRegistros] = actividad;
+        
+        totalRegistros++;
+        System.out.println("Actividad registrada con éxito!");
     }
     
     public static void modificarActividad(Scanner lector, int indiceUser) {
-        System.out.println("Función en construcción...");
+        System.out.println("\n--- Modificar actividad ---");
+        String nombreUsuario = idusuarios[indiceUser];
+        boolean tieneActividades = false;
+        
+        for (int i=0; i<totalRegistros; i++) {
+        	if (regUsuarios[i].equals(nombreUsuario)) {
+        		System.out.println("ID:"+i+" | "+regFechas[i]+" | "+regHoras[i]+"h | "+regActividades[i]);
+        		tieneActividades = true;
+        	}
+        }
+        if (!tieneActividades) {
+        	System.out.println("No tienes actividades registradas");
+        }
     }
     
     public static void eliminarActividad(Scanner lector, int indiceUser) {
@@ -355,4 +406,28 @@ public class Taller1 {
             System.out.println(regUsuarios[i] + " | " + regFechas[i] + " | " + regHoras[i] + " horas | " + regActividades[i]);
         }
     }
+    public static void guardarUsuarios() {
+    	try {
+    		FileWriter escritorUser = new FileWriter("Usuarios.txt");
+    		for (int i=0; i<totalUsuarios; i++) {
+    			escritorUser.write(idUsuarios[i] + ";" + passUsuarios[i] + "\n");
+    		}
+    		escritorUser.close();
+    		System.out.println("Archivo de usuarios actualizado correctamente.");
+    	} catch (Exception e) {
+    		System.out.println("Error al intentar guardar los usuarios.");
+    	}
+    }
+    public static void guardarRegistros() {
+    	try {
+    		FileWriter escritorReg = new FileWriter("Registros.txt");
+    		for (int i=0; i<totalRegistros;i++) {
+    			escritorReg.write(regUsuarios[i]+";"+regFechas[i]+";"+regHoras[i]+";"+regActividades[i]+"\n");
+    		}
+    		escritorReg.close();
+        	System.out.println("Archivo de registros actualizado correctamente.");
+    	} catch (Exception e) {
+        	System.out.println("Error al intentar guardar los registros.");
+        } 	
+    } 
 }
