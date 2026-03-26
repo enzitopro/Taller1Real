@@ -345,4 +345,14 @@ public class Taller1 {
         
         System.out.println("\nEl usuario con mayor procrastinación fue " + maxUsuario + " con " + maxHorasGlobal + " horas.");
     }
+    public static void todasLasActividades(Scanner lector) {
+        if (totalRegistros == 0) {
+            System.out.println("No se encontraron registros.");
+            return;
+        }
+        System.out.println("\nSe encontraron " + totalRegistros + " actividades:");
+        for (int i = 0; i < totalRegistros; i++) {
+            System.out.println(regUsuarios[i] + " | " + regFechas[i] + " | " + regHoras[i] + " horas | " + regActividades[i]);
+        }
+    }
 }
