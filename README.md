@@ -1,7 +1,6 @@
 ## (PARA QUE FUNCIONE CORRECTAMENTE): descargar zip y extraer, ir a eclipse -> File -> Import -> General -> Existing Projects into Workspace -> Select root directory (seleccionar la carpeta extraída) -> Finish y pueden ejecutar.
 ### Autores: 
-*enzitopro* 
-*justamago*
+*enzitopro* & *justamago*
 
 ```text
 Taller1Real/
