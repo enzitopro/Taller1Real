@@ -215,6 +215,7 @@ public class Taller1 {
         
         totalRegistros++;
         System.out.println("Actividad registrada con éxito!");
+        guardarRegistros();
     }
     
     public static void modificarActividad(Scanner lector, int indiceUser) {
@@ -263,6 +264,7 @@ public class Taller1 {
         			System.out.println("Opcion invalida. No se realizaron cambios");
         			
         	}
+    		guardarRegistros();
         	} else {
         		System.out.println("ID invalido o la actividad no te pertenece.");
         	}
@@ -301,6 +303,7 @@ public class Taller1 {
         		
         		totalRegistros--;
         		System.out.println("Actividad eliminada con exito!");
+        		guardarRegistros();
         	} else {
         		System.out.println("ID invalido o la actividad no te pertenece.");
         	}
@@ -316,6 +319,7 @@ public class Taller1 {
         
         passUsuarios[indiceUser] = nuevaPass;
         System.out.println("Contraseña actualizada con exito!.");
+        guardarUsuarios();
     }
     
     public static void menuAnalisis(Scanner lector) {
