@@ -198,3 +198,4 @@ Catalina;05/05/2026;1;programar
 Estefania;05/05/2026;2;Ver mlp
 Martin;06/05/2026;5;ser therian
 Catalina;06/05/2026;6;ser Batman por las noches
+Martin;26/03/2026;10;enzitopro haciendo un test de registro de actividad
