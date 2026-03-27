@@ -390,61 +390,35 @@ public class Taller1 {
             System.out.println("No se encontraron registros.");
             return;
         }
-        String usuario1 = "Martin";
-        String usuario2 = "Catalina";
-        String usuario3 = "Estefania";
-        String maxActividad1 = "";
-        String maxActividad2 = "";
-        String maxActividad3 = "";
-        int maxHoras1 = 0;
-        int maxHoras2 = 0;
-        int maxHoras3 = 0;
-        
-        for (int i = 0; i < totalRegistros; i++) {
-            if (regUsuarios[i].equals("Martin")) {
-                String actividad1 = regActividades[i];
-                int sumaHoras1 = 0;
-                for (int j = 0; j < totalRegistros; j++) {
-                    if (regUsuarios[j].equals("Martin") && regActividades[j].equals(actividad1)) {
-                        sumaHoras1 += regHoras[j];
-                    }
-                }
-                if (sumaHoras1 > maxHoras1) {
-                    maxHoras1 = sumaHoras1;
-                    maxActividad1 = actividad1;
-                }
-            }
-            if (regUsuarios[i].equals("Catalina")) {
-                String actividad2 = regActividades[i];
-                int sumaHoras2 = 0;
-                for (int j = 0; j < totalRegistros; j++) {
-                    if (regUsuarios[j].equals("Catalina") && regActividades[j].equals(actividad2)) {
-                        sumaHoras2 += regHoras[j];
-                    }
-                }
-                if (sumaHoras2 > maxHoras2) {
-                    maxHoras2 = sumaHoras2;
-                    maxActividad2 = actividad2;
-                }
-            }
-             if (regUsuarios[i].equals("Estefania")) {
-                String actividad3 = regActividades[i];
-                int sumaHoras3 = 0;
-                for (int j = 0; j < totalRegistros; j++) {
-                    if (regUsuarios[j].equals("Estefania") && regActividades[j].equals(actividad3)) {
-                        sumaHoras3 += regHoras[j];
-                    }
-                }
-                if (sumaHoras3 > maxHoras3) {
-                    maxHoras3 = sumaHoras3;
-                    maxActividad3 = actividad3;
-                }
-            }
-        } 
-        System.out.println("\nActividades mas realizadas por cada usuario:");
-        System.out.println("* " + usuario1 + " -> " + maxActividad1 + " -> con " + maxHoras1 + " horas registradas.");
-        System.out.println("* " + usuario2 + " -> " + maxActividad2 + " -> con " + maxHoras2 + " horas registradas.");
-        System.out.println("* " + usuario3 + " -> " + maxActividad3 + " -> con " + maxHoras3 + " horas registradas.");
+        System.out.println("\nActividades mas realizadas por cada usuario: ");
+        for (int u=0; u<totalUsuarios; u++) {
+        	String usuarioActual = idUsuarios[u];
+        	String maxActividad = "Ninugna";
+        	int maxHoras = 0;
+        	
+        	for (int i=0; i<totalRegistros; i++) {
+        		if (regUsuarios[i].equals(usuarioActual)) {
+        			String actividadActual = regActividades[i];
+        			int sumaHoras = 0;
+        			
+        			for (int j=0; j < totalRegistros; j++) {
+        				if (regUsuarios[j].equals(usuarioActual) && regActividades[j].equals(actividadActual)) {
+        					sumaHoras += regHoras[j];
+        				}
+        			}
+        			
+        			if (sumaHoras > maxHoras) {
+        				maxHoras = sumaHoras;
+        				maxActividad = actividadActual;
+        			}
+        		}
+        	}
+        	if (maxHoras>0) {
+        		System.out.println("* "+usuarioActual+"-> "+maxActividad+" -> con "+maxHoras+" horas registradas.");
+        	} else {
+        		System.out.println("* "+usuarioActual+" -> Sin actividades registradas aún.");
+        	}
+        }
     }
     public static void mayorProcrastinacion(Scanner lector) {
         if (totalRegistros == 0) {
